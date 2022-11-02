@@ -1,3 +1,5 @@
+import random
+
 print("-"*40)
 print(15*" " + "WORDLE")
 print("-"*40)
@@ -13,6 +15,8 @@ for x in f:
     list_of_words.append(x.lower().replace("\n",""))
 print(list_of_words)
 f.close();
+guess_word = list_of_words[random.randrange(0,len(list_of_words))]
+print(guess_word)
 
 # Typing area--------------------------------------------------------
 answer = ["-","-","-","-","-"]
@@ -24,6 +28,21 @@ for i in range(6):
             word = input("Invalid word. Type again: ")
         else:
             verify = False
+    for n in range(5):
+        for k in range(5):
+            if word[n] == guess_word[k]:
+                answer[k] = word[n]
+    print(answer)
+
+if '-' in guess_word:
+    print("You lost the game! The word is: ", guess_word)
+else:
+    print("You won the game")
+
+
+
+            
+
 
 
 
