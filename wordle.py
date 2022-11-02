@@ -20,6 +20,7 @@ print(guess_word)
 
 # Typing area--------------------------------------------------------
 answer = ["-","-","-","-","-"]
+final = False
 for i in range(6):
     word = input("This is your {d}° chance: ".format(d = i+1))
     verify = True
@@ -33,11 +34,16 @@ for i in range(6):
             if word[n] == guess_word[k]:
                 answer[k] = word[n]
     print(answer)
+    if word == guess_word or '-' not in answer:
+        print("You won the game!")
+        final = True
+        break
 
-if '-' in guess_word:
-    print("You lost the game! The word is: ", guess_word)
-else:
-    print("You won the game")
+if final == False:
+    if '-' in answer:
+        print("You lost the game! The word is: ", guess_word)
+    else:
+        print("You won the game")
 
 
 
